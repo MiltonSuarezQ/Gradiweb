@@ -5,18 +5,18 @@ const xhr = new XMLHttpRequest();
 function onRequestHandler() {
     if(this.readyState === 4 && this.status === 200){
         const data = JSON.parse(this.response);
-        console.log(data);  
         const featured_image = data.featured_image;
         const images = data.images;
         const description = data.description;
         const title = data.title;
         const vendor = data.vendor;
+        const colors = data.options[0].values;
         const price = data.price/100;
         const compare_at_price = data.compare_at_price/100;
         const formatDolar = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD'
-        })
+        })        
         var priceformat = formatDolar.format(price);
         var price_max_format = formatDolar.format(compare_at_price);
 
@@ -30,39 +30,31 @@ function onRequestHandler() {
         document.querySelector(".price-full").innerHTML = price_max_format;
         document.querySelector(".total").innerHTML = 'Total price <strong>'+priceformat+'</strong>';
         document.querySelector(".image_featured").innerHTML = '<img class="props" src="'+featured_image+'" alt="">';
-        const colors = data.options[0].values;        
-        console.log('Colores: ',colors);
-             
         
-        //Mostrar imagenes
-
-        let txt = "";
+        //Mostrar imagenes thumbnail
+        let image_thumbnail = "";
         images.shift();
         images.forEach(images_t);
-        document.querySelector(".image_thumbnail").innerHTML = txt;
+        document.querySelector(".image_thumbnail").innerHTML = image_thumbnail;
         function images_t(value) {
-            txt += '<img class="thumbnail" src="'+value+'" alt="">';
+            image_thumbnail += '<img class="thumbnail" src="'+value+'" alt="">';
         }  
-        
-        let txt1 = "";
+
+        //Checkox de colores
+        let color_checkbox = "";
         let c =  0;
         colors.forEach(myFunction);
-        document.querySelector(".color-1").innerHTML = txt1;
+        document.querySelector(".color-1").innerHTML = color_checkbox;
         function myFunction(value) {
             c = c+1;
-            txt1 += '<label class="container_color" id="c'+c+'"><span class="o">.</span><input type="checkbox" id="'+value+'" onclick="javascript: '+value+'()"><span class="checkmark_'+value+'"></span></label>';
-            //txt1 += '<img src="'+value+'" alt=""></img>';
-            //txt += '<h1>'+value + "</h1>"; 
-        }      
-        
-        //HTMLResponse.innerHTML = `<li>${data.images}</li>`
+            color_checkbox += '<label class="container_color" id="c'+c+'"><span class="o">.</span><input type="checkbox" id="'+value+'" onclick="javascript: '+value+'()"><span class="checkmark_'+value+'"></span></label>';
+        } 
     }
 }
 
 xhr.addEventListener("load", onRequestHandler);
 xhr.open("GET", `${API_URL}`);
 xhr.send();
-
 
 // Función Cantidad 
 var i = 1; 
