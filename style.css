@@ -283,4 +283,59 @@ hr:not([size]) {
 .title-pedido{
     margin-left: 3%;
 }
-
+@media only screen and (max-width: 600px) {
+    .images {
+        width: 100%;
+        margin-top: 5%;
+    }
+    .featured_image .props {
+        width: 100%;
+    }
+    .thumbnail {
+        display: none;
+    }
+    .breadCrumb  {
+        display: none;
+    }
+    .product {
+        width: 100%;
+    }
+    .button {
+        width: 100%;
+        margin-bottom: 4%;
+    }
+    .description-product {
+        margin-bottom: 10%;
+    }
+    .modal-content {
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 992px) and (min-width: 600px){
+    .name-product {
+        font-size: 1.6rem;
+    }
+    .breadCrumb {
+        display: none;
+    }
+    .images {
+        margin-top: 4%;
+    }
+    .product {
+        margin-top: 4%;
+    }
+    .button {
+        width: 100%;
+        margin-bottom: 4%;
+    }
+    .brand{
+        font-size: .9rem;
+        font-weight: 600;
+    }
+    .thumbnail {
+        display: none;
+    }
+    .modal-content {
+        width: 90%;
+    }
+}
