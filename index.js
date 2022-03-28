@@ -56,7 +56,7 @@ xhr.addEventListener("load", onRequestHandler);
 xhr.open("GET", `${API_URL}`);
 xhr.send();
 
-// Función Cantidad 
+
 var i = 1; 
 var total = 285.00;
 const formatDolarPrice = new Intl.NumberFormat('en-US', {
