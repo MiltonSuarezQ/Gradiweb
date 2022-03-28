@@ -29,21 +29,31 @@ function onRequestHandler() {
         document.querySelector(".price-order").innerHTML = '<strong>Valor unitario: </strong>'+priceformat;
         document.querySelector(".price-full").innerHTML = price_max_format;
         document.querySelector(".total").innerHTML = 'Total price <strong>'+priceformat+'</strong>';
-
-        
-        
-        //document.querySelector(".image").innerHTML = '<img src="'+featured_image+'" alt=""></img>';
-        
+        document.querySelector(".image_featured").innerHTML = '<img class="props" src="'+featured_image+'" alt="">';
+        const colors = data.options[0].values;        
+        console.log('Colores: ',colors);
+             
         
         //Mostrar imagenes
-        /*
+
         let txt = "";
-        images.forEach(myFunction);
-        document.querySelector(".images").innerHTML = txt;
+        images.shift();
+        images.forEach(images_t);
+        document.querySelector(".image_thumbnail").innerHTML = txt;
+        function images_t(value) {
+            txt += '<img class="thumbnail" src="'+value+'" alt="">';
+        }  
+        
+        let txt1 = "";
+        let c =  0;
+        colors.forEach(myFunction);
+        document.querySelector(".color-1").innerHTML = txt1;
         function myFunction(value) {
-            txt += '<img src="'+value+'" alt=""></img>';
+            c = c+1;
+            txt1 += '<label class="container_color" id="c'+c+'"><span class="o">.</span><input type="checkbox" id="'+value+'" onclick="javascript: '+value+'()"><span class="checkmark_'+value+'"></span></label>';
+            //txt1 += '<img src="'+value+'" alt=""></img>';
             //txt += '<h1>'+value + "</h1>"; 
-        }   */    
+        }      
         
         //HTMLResponse.innerHTML = `<li>${data.images}</li>`
     }
@@ -88,13 +98,28 @@ var modal = document.getElementById("myModal");
 var btn = document.getElementById("openModal");
 var span = document.getElementsByClassName("close")[0];
 btn.onclick = function() {
-  modal.style.display = "block";
+    modal.style.display = "block";
 }
 span.onclick = function() {
-  modal.style.display = "none";
+    modal.style.display = "none";
 }
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+}
+//Colors
+var colorOrder = "I don't select color";
+document.querySelector(".color-order").innerHTML = '<strong>Color: </strong>'+colorOrder;
+function Red(){   
+    document.getElementById("Red").checked = true; 
+    document.getElementById("Black").checked = false; 
+    colorOrder = "Red";
+    document.querySelector(".color-order").innerHTML = '<strong>Color: </strong>'+colorOrder;
+}
+function Black(){  
+    document.getElementById("Red").checked = false; 
+    document.getElementById("Black").checked = true; 
+    colorOrder = "Black";
+    document.querySelector(".color-order").innerHTML = '<strong>Color: </strong>'+colorOrder;
 }

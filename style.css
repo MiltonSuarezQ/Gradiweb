@@ -75,17 +75,13 @@ hr:not([size]) {
 }
 .color-1{
     width: auto;
-    float: left;
+    display: flex;
 }
-.color-2{
-    width: auto;
-    float: left;
-}
-#c1 input:checked ~ .checkmark {
+#c1 input:checked ~ .checkmark_Red {
     background-color: white;
     border: 1px solid #000;
 }
-#c2 input:checked ~ .checkmark_black {
+#c2 input:checked ~ .checkmark_Black {
     background-color: white;
     border: 1px solid #000;
 }
@@ -104,7 +100,7 @@ hr:not([size]) {
     height: 0;
     width: 0;
 }
-.checkmark {
+.checkmark_Red {
     position: absolute;
     top: 0;
     left: 0;
@@ -113,7 +109,7 @@ hr:not([size]) {
     background-color: #ff0000;
     border-radius:50%;
 }
-.checkmark_black {
+.checkmark_Black {
     position: absolute;
     top: 0;
     left: 0;
@@ -122,29 +118,29 @@ hr:not([size]) {
     background-color: #000;
     border-radius:50%
 }
-.container_color:hover input ~ .checkmark {
+.container_color:hover input ~ .checkmark_Red{
     background-color: #ff0000;
 }
-.container_color:hover input ~ .checkmark_black {
+.container_color:hover input ~ .checkmark_Black {
     background-color: #000;
 }
-.checkmark:after {
+.checkmark_Red:after {
     content: "";
     position: absolute;
     display: none;
 }
-.checkmark_black:after {
+.checkmark_Black:after {
     content: "";
     position: absolute;
     display: none;
 }
-.container_color input:checked ~ .checkmark:after {
+.container_color input:checked ~ .checkmark_Red:after {
     display: block;
 }
-.container_color input:checked ~ .checkmark_black:after {
+.container_color input:checked ~ .checkmark_Black:after {
     display: block;
 }
-.container_color .checkmark:after {
+.container_color .checkmark_Red:after {
     left: 6px;
     top: 6px;
     width: 14px;
@@ -154,7 +150,7 @@ hr:not([size]) {
     background-color:#ff0000;
     border-radius:50%
 }
-.container_color .checkmark_black:after {
+.container_color .checkmark_Black:after {
     left: 6px;
     top: 6px;
     width: 14px;
